@@ -1,7 +1,11 @@
 # The Project Ecommerce
 
-[# Instalation](###Instalation)
+[Instalation](###Instalation)
 
-## Getting Started
+### Instalation
+
+~~~npm 
+npx create-next-app ECOMMERCE
+~~~
 
 
