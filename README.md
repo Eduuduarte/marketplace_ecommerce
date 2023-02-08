@@ -1,6 +1,7 @@
 # The Project Ecommerce
 
 [Instalation](###Instalation)
+[Project](###TheProject)
 
 ### Instalation
 
@@ -8,4 +9,10 @@
 npx create-next-app ECOMMERCE
 ~~~
 
+#### Sanity
 
+~~~npm
+npm create sanity@latest
+~~~
+
+### The Project
