@@ -3,6 +3,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-
 
 import { Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
+import { useFormater } from '../../lib/formater';
 
 
 import { client, urlFor } from '../../lib/client';
@@ -11,6 +12,8 @@ const ProductDetails = ({ product, products }) => {
     const { image, name, details, price } = product;
     const [index, setIndex] = useState(0);
     const { decQty, incQty, qty, onAdd, setShowCart} = useStateContext();
+
+    const formatter = useFormater();
 
     const handleByNow = () => {
         onAdd(product, qty);
@@ -50,7 +53,7 @@ const ProductDetails = ({ product, products }) => {
                     </div>
                     <h4>Details: </h4>
                     <p>{details}</p>
-                    <p className='price'>${price}</p>
+                    <p className='price'>{formatter.formaterCurrency(parseInt(price))}</p>
                     <div className='quantity'>
                         <h3>Quantity:</h3>
                         <p className='quantity-desc'>
