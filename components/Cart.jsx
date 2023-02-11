@@ -1,17 +1,22 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
+import Link from 'next/link';
+
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping  } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
 import toast from 'react-hot-toast';
 
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
-import Link from 'next/link';
+import { useFormater } from '../lib/formater';
+
 import getStripe from '../lib/getStripe';
-import { loadStripe } from '@stripe/stripe-js';
+
 
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
+
+  const formatter = useFormater();
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
@@ -61,7 +66,7 @@ const Cart = () => {
               <div className='item-desc'>
                 <div className='flex top'>
                   <h5>{item.name}</h5>
-                  <h4>${item.price}</h4>
+                  <h4>{formatter.formaterCurrency(parseInt(item.price))}</h4>
                 </div>
                 <div className='flex bottom'>
                   <div>
